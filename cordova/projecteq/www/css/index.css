@@ -1,0 +1,94 @@
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+body {
+    -webkit-touch-callout: none; /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none; /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none; /* prevent copy paste, to allow, change 'none' to 'text' */
+    font-family: system-ui, -apple-system, -apple-system-font, 'Segoe UI', 'Roboto', sans-serif;
+    font-size: 12px;
+    height: 100vh;
+    margin: 0px auto;
+    padding: 0px;
+    padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+    text-transform: uppercase;
+    width: 100%;
+    background-color: #ffffff;
+    color: #666;
+    max-width: 800px;
+    position: relative;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: normal;
+    margin: 0px;
+    overflow: visible;
+    padding: 0px;
+    text-align: center;
+}
+
+@keyframes fade {
+    from {
+        opacity: 1.0;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+
+    to {
+        opacity: 1.0;
+    }
+}
+
+.blink {
+    animation: fade 3000ms infinite;
+    -webkit-animation: fade 3000ms infinite;
+}
+
+
+.text-center {
+    text-align: center;
+}
+
+.contentwrapper {
+    padding: 60px 10px 30px 10px;
+    min-height: 600px;
+    text-transform: initial;
+}
+
+.headerwrapper {
+    text-align: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    max-width: 800px;
+    background-color: #fbfbf8;
+}
+
+    .headerwrapper .logotitle {
+        font-size: 18px;
+        font-weight: bold;
+        text-transform: initial;
+    }
+
+    .headerwrapper .menu {
+        background-color: #eee;
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        padding: 8px 0;
+    }
+
+.footerwrapper {
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    max-width: 800px;
+    background-color: #eee;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    padding: 8px 0;
+}
