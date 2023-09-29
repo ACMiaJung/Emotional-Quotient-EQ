@@ -338,6 +338,8 @@
     <Content Include="dlls\james.utils.dll" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="images\icon.png" />
+    <Content Include="images\splash.png" />
     <Content Include="Scripts\app\_run.js" />
     <Content Include="Scripts\app\app.datamodel.js" />
     <Content Include="Scripts\app\app.viewmodel.js" />
