@@ -1,0 +1,1017 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AnswerType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Hometown" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EQArea">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EQTrackingItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AreaId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Question" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="OriginalTemplateId" Type="int" />
+        </EntityType>
+        <EntityType Name="EQTrackingItemAnswer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TrackingItemId" Type="int" Nullable="false" />
+          <Property Name="AnswerTypeId" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="Point" Type="int" />
+        </EntityType>
+        <EntityType Name="EQTrackingItemAnswerTemplate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TrackingItemId" Type="int" Nullable="false" />
+          <Property Name="AnswerTypeId" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="Point" Type="int" />
+        </EntityType>
+        <EntityType Name="EQTrackingItemTemplate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AreaId" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Question" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="OwnerId" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="PersonalGoal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="AnswerId" Type="int" Nullable="false" />
+          <Property Name="Goal" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PersonalTrackingLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" />
+          <Property Name="AnswerId" Type="int" Nullable="false" />
+          <Property Name="Point" Type="int" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar(max)" />
+          <Property Name="RegDT" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EQTrackingItem_AspNetUsers1">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="EQTrackingItem" Type="Self.EQTrackingItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EQTrackingItem">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EQTrackingItem_EQArea">
+          <End Role="EQArea" Type="Self.EQArea" Multiplicity="1" />
+          <End Role="EQTrackingItem" Type="Self.EQTrackingItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EQArea">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EQTrackingItem">
+              <PropertyRef Name="AreaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EQTrackingItemAnswer_AnswerType">
+          <End Role="AnswerType" Type="Self.AnswerType" Multiplicity="1" />
+          <End Role="EQTrackingItemAnswer" Type="Self.EQTrackingItemAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnswerType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EQTrackingItemAnswer">
+              <PropertyRef Name="AnswerTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EQTrackingItemAnswer_EQTrackingItem">
+          <End Role="EQTrackingItem" Type="Self.EQTrackingItem" Multiplicity="1" />
+          <End Role="EQTrackingItemAnswer" Type="Self.EQTrackingItemAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EQTrackingItem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EQTrackingItemAnswer">
+              <PropertyRef Name="TrackingItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EQTrackingItemAnswerTemplate_AnswerType">
+          <End Role="AnswerType" Type="Self.AnswerType" Multiplicity="1" />
+          <End Role="EQTrackingItemAnswerTemplate" Type="Self.EQTrackingItemAnswerTemplate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnswerType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EQTrackingItemAnswerTemplate">
+              <PropertyRef Name="AnswerTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EQTrackingItemAnswerTemplate_EQTrackingItemTemplate">
+          <End Role="EQTrackingItemTemplate" Type="Self.EQTrackingItemTemplate" Multiplicity="1" />
+          <End Role="EQTrackingItemAnswerTemplate" Type="Self.EQTrackingItemAnswerTemplate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EQTrackingItemTemplate">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EQTrackingItemAnswerTemplate">
+              <PropertyRef Name="TrackingItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EQTrackingItemTemplate_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="EQTrackingItemTemplate" Type="Self.EQTrackingItemTemplate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EQTrackingItemTemplate">
+              <PropertyRef Name="OwnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EQTrackingItemTemplate_EQArea">
+          <End Role="EQArea" Type="Self.EQArea" Multiplicity="1" />
+          <End Role="EQTrackingItemTemplate" Type="Self.EQTrackingItemTemplate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EQArea">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EQTrackingItemTemplate">
+              <PropertyRef Name="AreaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonalGoal_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="PersonalGoal" Type="Self.PersonalGoal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PersonalGoal">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonalGoal_EQTrackingItemAnswer">
+          <End Role="EQTrackingItemAnswer" Type="Self.EQTrackingItemAnswer" Multiplicity="1" />
+          <End Role="PersonalGoal" Type="Self.PersonalGoal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EQTrackingItemAnswer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PersonalGoal">
+              <PropertyRef Name="AnswerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonalTrackingLog_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="PersonalTrackingLog" Type="Self.PersonalTrackingLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PersonalTrackingLog">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonalTrackingLog_EQTrackingItemAnswer">
+          <End Role="EQTrackingItemAnswer" Type="Self.EQTrackingItemAnswer" Multiplicity="1" />
+          <End Role="PersonalTrackingLog" Type="Self.PersonalTrackingLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EQTrackingItemAnswer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PersonalTrackingLog">
+              <PropertyRef Name="AnswerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="AnswerType" EntityType="Self.AnswerType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EQArea" EntityType="Self.EQArea" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EQTrackingItem" EntityType="Self.EQTrackingItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EQTrackingItemAnswer" EntityType="Self.EQTrackingItemAnswer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EQTrackingItemAnswerTemplate" EntityType="Self.EQTrackingItemAnswerTemplate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EQTrackingItemTemplate" EntityType="Self.EQTrackingItemTemplate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersonalGoal" EntityType="Self.PersonalGoal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersonalTrackingLog" EntityType="Self.PersonalTrackingLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EQTrackingItem_AspNetUsers1" Association="Self.FK_EQTrackingItem_AspNetUsers1">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="EQTrackingItem" EntitySet="EQTrackingItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EQTrackingItem_EQArea" Association="Self.FK_EQTrackingItem_EQArea">
+            <End Role="EQArea" EntitySet="EQArea" />
+            <End Role="EQTrackingItem" EntitySet="EQTrackingItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EQTrackingItemAnswer_AnswerType" Association="Self.FK_EQTrackingItemAnswer_AnswerType">
+            <End Role="AnswerType" EntitySet="AnswerType" />
+            <End Role="EQTrackingItemAnswer" EntitySet="EQTrackingItemAnswer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EQTrackingItemAnswer_EQTrackingItem" Association="Self.FK_EQTrackingItemAnswer_EQTrackingItem">
+            <End Role="EQTrackingItem" EntitySet="EQTrackingItem" />
+            <End Role="EQTrackingItemAnswer" EntitySet="EQTrackingItemAnswer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EQTrackingItemAnswerTemplate_AnswerType" Association="Self.FK_EQTrackingItemAnswerTemplate_AnswerType">
+            <End Role="AnswerType" EntitySet="AnswerType" />
+            <End Role="EQTrackingItemAnswerTemplate" EntitySet="EQTrackingItemAnswerTemplate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EQTrackingItemAnswerTemplate_EQTrackingItemTemplate" Association="Self.FK_EQTrackingItemAnswerTemplate_EQTrackingItemTemplate">
+            <End Role="EQTrackingItemTemplate" EntitySet="EQTrackingItemTemplate" />
+            <End Role="EQTrackingItemAnswerTemplate" EntitySet="EQTrackingItemAnswerTemplate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EQTrackingItemTemplate_AspNetUsers" Association="Self.FK_EQTrackingItemTemplate_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="EQTrackingItemTemplate" EntitySet="EQTrackingItemTemplate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EQTrackingItemTemplate_EQArea" Association="Self.FK_EQTrackingItemTemplate_EQArea">
+            <End Role="EQArea" EntitySet="EQArea" />
+            <End Role="EQTrackingItemTemplate" EntitySet="EQTrackingItemTemplate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonalGoal_AspNetUsers" Association="Self.FK_PersonalGoal_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="PersonalGoal" EntitySet="PersonalGoal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonalGoal_EQTrackingItemAnswer" Association="Self.FK_PersonalGoal_EQTrackingItemAnswer">
+            <End Role="EQTrackingItemAnswer" EntitySet="EQTrackingItemAnswer" />
+            <End Role="PersonalGoal" EntitySet="PersonalGoal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonalTrackingLog_AspNetUsers" Association="Self.FK_PersonalTrackingLog_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="PersonalTrackingLog" EntitySet="PersonalTrackingLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonalTrackingLog_EQTrackingItemAnswer" Association="Self.FK_PersonalTrackingLog_EQTrackingItemAnswer">
+            <End Role="EQTrackingItemAnswer" EntitySet="EQTrackingItemAnswer" />
+            <End Role="PersonalTrackingLog" EntitySet="PersonalTrackingLog" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AnswerType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="EQTrackingItemAnswers" Relationship="Self.FK_EQTrackingItemAnswer_AnswerType" FromRole="AnswerType" ToRole="EQTrackingItemAnswer" />
+          <NavigationProperty Name="EQTrackingItemAnswerTemplates" Relationship="Self.FK_EQTrackingItemAnswerTemplate_AnswerType" FromRole="AnswerType" ToRole="EQTrackingItemAnswerTemplate" />
+        </EntityType>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Hometown" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="EQTrackingItems" Relationship="Self.FK_EQTrackingItem_AspNetUsers1" FromRole="AspNetUsers" ToRole="EQTrackingItem" />
+          <NavigationProperty Name="EQTrackingItemTemplates" Relationship="Self.FK_EQTrackingItemTemplate_AspNetUsers" FromRole="AspNetUsers" ToRole="EQTrackingItemTemplate" />
+          <NavigationProperty Name="PersonalGoals" Relationship="Self.FK_PersonalGoal_AspNetUsers" FromRole="AspNetUsers" ToRole="PersonalGoal" />
+          <NavigationProperty Name="PersonalTrackingLogs" Relationship="Self.FK_PersonalTrackingLog_AspNetUsers" FromRole="AspNetUsers" ToRole="PersonalTrackingLog" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="EQArea">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="EQTrackingItems" Relationship="Self.FK_EQTrackingItem_EQArea" FromRole="EQArea" ToRole="EQTrackingItem" />
+          <NavigationProperty Name="EQTrackingItemTemplates" Relationship="Self.FK_EQTrackingItemTemplate_EQArea" FromRole="EQArea" ToRole="EQTrackingItemTemplate" />
+        </EntityType>
+        <EntityType Name="EQTrackingItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AreaId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Question" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OriginalTemplateId" Type="Int32" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_EQTrackingItem_AspNetUsers1" FromRole="EQTrackingItem" ToRole="AspNetUsers" />
+          <NavigationProperty Name="EQArea" Relationship="Self.FK_EQTrackingItem_EQArea" FromRole="EQTrackingItem" ToRole="EQArea" />
+          <NavigationProperty Name="EQTrackingItemAnswers" Relationship="Self.FK_EQTrackingItemAnswer_EQTrackingItem" FromRole="EQTrackingItem" ToRole="EQTrackingItemAnswer" />
+        </EntityType>
+        <EntityType Name="EQTrackingItemAnswer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TrackingItemId" Type="Int32" Nullable="false" />
+          <Property Name="AnswerTypeId" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Point" Type="Int32" />
+          <NavigationProperty Name="AnswerType" Relationship="Self.FK_EQTrackingItemAnswer_AnswerType" FromRole="EQTrackingItemAnswer" ToRole="AnswerType" />
+          <NavigationProperty Name="EQTrackingItem" Relationship="Self.FK_EQTrackingItemAnswer_EQTrackingItem" FromRole="EQTrackingItemAnswer" ToRole="EQTrackingItem" />
+          <NavigationProperty Name="PersonalGoals" Relationship="Self.FK_PersonalGoal_EQTrackingItemAnswer" FromRole="EQTrackingItemAnswer" ToRole="PersonalGoal" />
+          <NavigationProperty Name="PersonalTrackingLogs" Relationship="Self.FK_PersonalTrackingLog_EQTrackingItemAnswer" FromRole="EQTrackingItemAnswer" ToRole="PersonalTrackingLog" />
+        </EntityType>
+        <EntityType Name="EQTrackingItemAnswerTemplate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TrackingItemId" Type="Int32" Nullable="false" />
+          <Property Name="AnswerTypeId" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Point" Type="Int32" />
+          <NavigationProperty Name="AnswerType" Relationship="Self.FK_EQTrackingItemAnswerTemplate_AnswerType" FromRole="EQTrackingItemAnswerTemplate" ToRole="AnswerType" />
+          <NavigationProperty Name="EQTrackingItemTemplate" Relationship="Self.FK_EQTrackingItemAnswerTemplate_EQTrackingItemTemplate" FromRole="EQTrackingItemAnswerTemplate" ToRole="EQTrackingItemTemplate" />
+        </EntityType>
+        <EntityType Name="EQTrackingItemTemplate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AreaId" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Question" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OwnerId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_EQTrackingItemTemplate_AspNetUsers" FromRole="EQTrackingItemTemplate" ToRole="AspNetUsers" />
+          <NavigationProperty Name="EQArea" Relationship="Self.FK_EQTrackingItemTemplate_EQArea" FromRole="EQTrackingItemTemplate" ToRole="EQArea" />
+          <NavigationProperty Name="EQTrackingItemAnswerTemplates" Relationship="Self.FK_EQTrackingItemAnswerTemplate_EQTrackingItemTemplate" FromRole="EQTrackingItemTemplate" ToRole="EQTrackingItemAnswerTemplate" />
+        </EntityType>
+        <EntityType Name="PersonalGoal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AnswerId" Type="Int32" Nullable="false" />
+          <Property Name="Goal" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_PersonalGoal_AspNetUsers" FromRole="PersonalGoal" ToRole="AspNetUsers" />
+          <NavigationProperty Name="EQTrackingItemAnswer" Relationship="Self.FK_PersonalGoal_EQTrackingItemAnswer" FromRole="PersonalGoal" ToRole="EQTrackingItemAnswer" />
+        </EntityType>
+        <EntityType Name="PersonalTrackingLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="AnswerId" Type="Int32" Nullable="false" />
+          <Property Name="Point" Type="Int32" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RegDT" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_PersonalTrackingLog_AspNetUsers" FromRole="PersonalTrackingLog" ToRole="AspNetUsers" />
+          <NavigationProperty Name="EQTrackingItemAnswer" Relationship="Self.FK_PersonalTrackingLog_EQTrackingItemAnswer" FromRole="PersonalTrackingLog" ToRole="EQTrackingItemAnswer" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_EQTrackingItemAnswer_AnswerType">
+          <End Role="AnswerType" Type="Self.AnswerType" Multiplicity="1" />
+          <End Role="EQTrackingItemAnswer" Type="Self.EQTrackingItemAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnswerType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EQTrackingItemAnswer">
+              <PropertyRef Name="AnswerTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EQTrackingItemAnswerTemplate_AnswerType">
+          <End Role="AnswerType" Type="Self.AnswerType" Multiplicity="1" />
+          <End Role="EQTrackingItemAnswerTemplate" Type="Self.EQTrackingItemAnswerTemplate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnswerType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EQTrackingItemAnswerTemplate">
+              <PropertyRef Name="AnswerTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EQTrackingItem_AspNetUsers1">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="EQTrackingItem" Type="Self.EQTrackingItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EQTrackingItem">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EQTrackingItemTemplate_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="0..1" />
+          <End Role="EQTrackingItemTemplate" Type="Self.EQTrackingItemTemplate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EQTrackingItemTemplate">
+              <PropertyRef Name="OwnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonalGoal_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="PersonalGoal" Type="Self.PersonalGoal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PersonalGoal">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonalTrackingLog_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="0..1" />
+          <End Role="PersonalTrackingLog" Type="Self.PersonalTrackingLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PersonalTrackingLog">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EQTrackingItem_EQArea">
+          <End Role="EQArea" Type="Self.EQArea" Multiplicity="1" />
+          <End Role="EQTrackingItem" Type="Self.EQTrackingItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EQArea">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EQTrackingItem">
+              <PropertyRef Name="AreaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EQTrackingItemTemplate_EQArea">
+          <End Role="EQArea" Type="Self.EQArea" Multiplicity="1" />
+          <End Role="EQTrackingItemTemplate" Type="Self.EQTrackingItemTemplate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EQArea">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EQTrackingItemTemplate">
+              <PropertyRef Name="AreaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EQTrackingItemAnswer_EQTrackingItem">
+          <End Role="EQTrackingItem" Type="Self.EQTrackingItem" Multiplicity="1" />
+          <End Role="EQTrackingItemAnswer" Type="Self.EQTrackingItemAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EQTrackingItem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EQTrackingItemAnswer">
+              <PropertyRef Name="TrackingItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonalGoal_EQTrackingItemAnswer">
+          <End Role="EQTrackingItemAnswer" Type="Self.EQTrackingItemAnswer" Multiplicity="1" />
+          <End Role="PersonalGoal" Type="Self.PersonalGoal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EQTrackingItemAnswer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PersonalGoal">
+              <PropertyRef Name="AnswerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonalTrackingLog_EQTrackingItemAnswer">
+          <End Role="EQTrackingItemAnswer" Type="Self.EQTrackingItemAnswer" Multiplicity="1" />
+          <End Role="PersonalTrackingLog" Type="Self.PersonalTrackingLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EQTrackingItemAnswer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PersonalTrackingLog">
+              <PropertyRef Name="AnswerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EQTrackingItemAnswerTemplate_EQTrackingItemTemplate">
+          <End Role="EQTrackingItemTemplate" Type="Self.EQTrackingItemTemplate" Multiplicity="1" />
+          <End Role="EQTrackingItemAnswerTemplate" Type="Self.EQTrackingItemAnswerTemplate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EQTrackingItemTemplate">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EQTrackingItemAnswerTemplate">
+              <PropertyRef Name="TrackingItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="EQEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AnswerTypes" EntityType="Self.AnswerType" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="EQAreas" EntityType="Self.EQArea" />
+          <EntitySet Name="EQTrackingItems" EntityType="Self.EQTrackingItem" />
+          <EntitySet Name="EQTrackingItemAnswers" EntityType="Self.EQTrackingItemAnswer" />
+          <EntitySet Name="EQTrackingItemAnswerTemplates" EntityType="Self.EQTrackingItemAnswerTemplate" />
+          <EntitySet Name="EQTrackingItemTemplates" EntityType="Self.EQTrackingItemTemplate" />
+          <EntitySet Name="PersonalGoals" EntityType="Self.PersonalGoal" />
+          <EntitySet Name="PersonalTrackingLogs" EntityType="Self.PersonalTrackingLog" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <AssociationSet Name="FK_EQTrackingItemAnswer_AnswerType" Association="Self.FK_EQTrackingItemAnswer_AnswerType">
+            <End Role="AnswerType" EntitySet="AnswerTypes" />
+            <End Role="EQTrackingItemAnswer" EntitySet="EQTrackingItemAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EQTrackingItemAnswerTemplate_AnswerType" Association="Self.FK_EQTrackingItemAnswerTemplate_AnswerType">
+            <End Role="AnswerType" EntitySet="AnswerTypes" />
+            <End Role="EQTrackingItemAnswerTemplate" EntitySet="EQTrackingItemAnswerTemplates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EQTrackingItem_AspNetUsers1" Association="Self.FK_EQTrackingItem_AspNetUsers1">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="EQTrackingItem" EntitySet="EQTrackingItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EQTrackingItemTemplate_AspNetUsers" Association="Self.FK_EQTrackingItemTemplate_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="EQTrackingItemTemplate" EntitySet="EQTrackingItemTemplates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonalGoal_AspNetUsers" Association="Self.FK_PersonalGoal_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="PersonalGoal" EntitySet="PersonalGoals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonalTrackingLog_AspNetUsers" Association="Self.FK_PersonalTrackingLog_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="PersonalTrackingLog" EntitySet="PersonalTrackingLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EQTrackingItem_EQArea" Association="Self.FK_EQTrackingItem_EQArea">
+            <End Role="EQArea" EntitySet="EQAreas" />
+            <End Role="EQTrackingItem" EntitySet="EQTrackingItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EQTrackingItemTemplate_EQArea" Association="Self.FK_EQTrackingItemTemplate_EQArea">
+            <End Role="EQArea" EntitySet="EQAreas" />
+            <End Role="EQTrackingItemTemplate" EntitySet="EQTrackingItemTemplates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EQTrackingItemAnswer_EQTrackingItem" Association="Self.FK_EQTrackingItemAnswer_EQTrackingItem">
+            <End Role="EQTrackingItem" EntitySet="EQTrackingItems" />
+            <End Role="EQTrackingItemAnswer" EntitySet="EQTrackingItemAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonalGoal_EQTrackingItemAnswer" Association="Self.FK_PersonalGoal_EQTrackingItemAnswer">
+            <End Role="EQTrackingItemAnswer" EntitySet="EQTrackingItemAnswers" />
+            <End Role="PersonalGoal" EntitySet="PersonalGoals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonalTrackingLog_EQTrackingItemAnswer" Association="Self.FK_PersonalTrackingLog_EQTrackingItemAnswer">
+            <End Role="EQTrackingItemAnswer" EntitySet="EQTrackingItemAnswers" />
+            <End Role="PersonalTrackingLog" EntitySet="PersonalTrackingLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EQTrackingItemAnswerTemplate_EQTrackingItemTemplate" Association="Self.FK_EQTrackingItemAnswerTemplate_EQTrackingItemTemplate">
+            <End Role="EQTrackingItemTemplate" EntitySet="EQTrackingItemTemplates" />
+            <End Role="EQTrackingItemAnswerTemplate" EntitySet="EQTrackingItemAnswerTemplates" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="EQEntities">
+          <EntitySetMapping Name="AnswerTypes">
+            <EntityTypeMapping TypeName="Model.AnswerType">
+              <MappingFragment StoreEntitySet="AnswerType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="Model.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="Model.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="Model.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="Model.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Hometown" ColumnName="Hometown" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EQAreas">
+            <EntityTypeMapping TypeName="Model.EQArea">
+              <MappingFragment StoreEntitySet="EQArea">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EQTrackingItems">
+            <EntityTypeMapping TypeName="Model.EQTrackingItem">
+              <MappingFragment StoreEntitySet="EQTrackingItem">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="OriginalTemplateId" ColumnName="OriginalTemplateId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EQTrackingItemAnswers">
+            <EntityTypeMapping TypeName="Model.EQTrackingItemAnswer">
+              <MappingFragment StoreEntitySet="EQTrackingItemAnswer">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TrackingItemId" ColumnName="TrackingItemId" />
+                <ScalarProperty Name="AnswerTypeId" ColumnName="AnswerTypeId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Point" ColumnName="Point" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EQTrackingItemAnswerTemplates">
+            <EntityTypeMapping TypeName="Model.EQTrackingItemAnswerTemplate">
+              <MappingFragment StoreEntitySet="EQTrackingItemAnswerTemplate">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TrackingItemId" ColumnName="TrackingItemId" />
+                <ScalarProperty Name="AnswerTypeId" ColumnName="AnswerTypeId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Point" ColumnName="Point" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EQTrackingItemTemplates">
+            <EntityTypeMapping TypeName="Model.EQTrackingItemTemplate">
+              <MappingFragment StoreEntitySet="EQTrackingItemTemplate">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonalGoals">
+            <EntityTypeMapping TypeName="Model.PersonalGoal">
+              <MappingFragment StoreEntitySet="PersonalGoal">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="AnswerId" ColumnName="AnswerId" />
+                <ScalarProperty Name="Goal" ColumnName="Goal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonalTrackingLogs">
+            <EntityTypeMapping TypeName="Model.PersonalTrackingLog">
+              <MappingFragment StoreEntitySet="PersonalTrackingLog">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="AnswerId" ColumnName="AnswerId" />
+                <ScalarProperty Name="Point" ColumnName="Point" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="RegDT" ColumnName="RegDT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Model.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="Model.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

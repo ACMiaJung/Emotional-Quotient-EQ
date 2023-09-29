@@ -1,0 +1,60 @@
+﻿@model eq.model.entitymodel.EQTrackingItemTemplate
+<div class="row">
+    @Html.LabelFor(model => model.AreaId, "Area", htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-3">
+        @Html.Partial("_inputwithgridsearch", new ViewDataDictionary() {
+        { "fieldname", "AreaId" }
+        , { "displayfieldname", "Title"}
+        , { "fieldnametopick", "Id" }
+        , { "displayfieldnametopick", "Title" }
+        , { "value", Model.AreaId }
+        , { "displayvalue", Model.EQArea == null?string.Empty:Model.EQArea.Title }
+        , { "searchfields", "Title" }
+        , { "searchfieldnames", "Title" }
+        , { "odatasourceurl", "/odata/EQAreas?$select=Id,Title" }
+        , { "gridcolumns", "[{\"field\":\"Id\", \"title\":\"Id\"}, {\"field\":\"Title\", \"title\":\"Title\"} ]" }
+        , {"pagesize", "6" }
+        , { "required", "required" }
+		, { "positioncontrol", "fixed" }
+    })
+        @*@Html.DropDownList("AreaId", null, htmlAttributes: new { @class = "form-control" })*@
+        @Html.ValidationMessageFor(model => model.AreaId, "", new { @class = "text-danger" })
+    </div>
+    @Html.LabelFor(model => model.Title, "Title", htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-3">
+        @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control", datatype="System.String" } })
+        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="row">
+    @Html.LabelFor(model => model.Question, "Question", htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-3">
+        @Html.EditorFor(model => model.Question, new { htmlAttributes = new { @class = "form-control", datatype="System.String" } })
+        @Html.ValidationMessageFor(model => model.Question, "", new { @class = "text-danger" })
+    </div>
+    @Html.LabelFor(model => model.OwnerId, "Template Owner", htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-3">
+        @Html.Partial("_inputwithgridsearch", new ViewDataDictionary() {
+        { "fieldname", "OwnerId" }
+        , { "displayfieldname", "Hometown"}
+        , { "fieldnametopick", "Id" }
+        , { "displayfieldnametopick", "Hometown" }
+        , { "value", Model.OwnerId }
+        , { "displayvalue", Model.AspNetUser == null?string.Empty:Model.AspNetUser.Hometown }
+        , { "searchfields", "Hometown" }
+        , { "searchfieldnames", "Hometown" }
+        , { "odatasourceurl", "/odata/AspNetUsers?$select=Id,Hometown" }
+        , { "gridcolumns", "[{\"field\":\"Id\", \"title\":\"Id\"}, {\"field\":\"Hometown\", \"title\":\"Hometown\"} ]" }
+        , {"pagesize", "6" }
+		, { "positioncontrol", "fixed" }
+    })
+        @*@Html.DropDownList("OwnerId", null, htmlAttributes: new { @class = "form-control" })*@
+        @Html.ValidationMessageFor(model => model.OwnerId, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="hide">
+	<input type="hidden" name="pageid" value="@Request["pageid"]" />
+</div>
+@Html.Partial("_formexecutionresultmessage")
