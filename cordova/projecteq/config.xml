@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.jandslab.eq" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>projecteq</name>
-    <description>Sample Apache Cordova App</description>
-    <author email="dev@cordova.apache.org" href="https://cordova.apache.org">
-        Apache Cordova Team
+    <name>Project EQ</name>
+    <description>Project EQ: Keep balance in your life</description>
+    <author email="james@jandslab.com" href="http://jandslab.com">
+        J&amp;S Lab
     </author>
     <content src="index.html" />
     <allow-intent href="http://*/*" />

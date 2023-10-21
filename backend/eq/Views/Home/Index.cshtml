@@ -4,4 +4,20 @@
 @section Scripts{
     @Scripts.Render("~/bundles/knockout")
     @Scripts.Render("~/bundles/app")
+<script>
+        $.ajax(
+        {
+                type: 'POST',
+                url: '/token',
+                data: $.param({ grant_type: 'password', username: 'hanhead@gmail.com', password: '123Qwer@@' }),
+                contentType: 'application/x-www-form-urlencoded',
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader('Authorization', 'Basic NjkzRjVEMDYtODA1NC00MEM2LTkwNjItQkVBQTNCMkIwMUE3OkM2Q0M5RDJELTI4RTAtNEJCNy04QjkyLUU3NDU1NjUzNTM2Mg==');
+                }
+        }
+    ).done(function (data) {
+        console.log(data);
+        //sessionStorage.setItem('token', data);
+    });
+</script>
 }
